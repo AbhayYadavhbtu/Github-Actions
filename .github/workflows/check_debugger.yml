@@ -1,0 +1,28 @@
+name: Debug Code Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-debug-code:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Scan for debug statements
+      run: |
+
+        echo "Checking for debugger statements..."
+
+        if grep -rE "debugger|console\.log|console\.warn|console\.error" src/; then
+          echo "Debugger found in project"
+          exit 1
+        else
+          echo "Good to go"
+        fi
