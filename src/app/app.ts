@@ -8,5 +8,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
+  
   protected readonly title = signal('github-actions');
+  load() {
+    debugger;
+    console.log('App loaded');
+  }
 }
